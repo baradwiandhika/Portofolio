@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll("nav a");
+    const currentPage = window.location.pathname.split("/").pop();
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: black;
+            color: white;
+            padding-top: 6rem;
+            min-height: 100vh;
+        }
+
+        /* ===== NAVBAR ===== */
+        /* ===== NAVBAR ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 9%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.4);
+            /* semi transparan */
+            backdrop-filter: blur(10px);
+            /* efek kaca */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease, padding 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+            /* solid saat scroll */
+            padding: 0.6rem 9%;
+        }
+
+        /* LOGO */
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #921A40, #ff3d7f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.5s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff3d7f, #921A40);
+            -webkit-background-clip: text;
+        }
+
+        /* NAV LINKS */
+        nav a {
+            position: relative;
+            font-size: 1.6rem;
+            color: white;
+            margin-left: 3rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 3px;
+            background: #921A40;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #921A40;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+
+        /* ===== HOME SECTION ===== */
+        section {
+            padding: 13rem 9% 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .home-img img {
+            width: 22vw;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(146, 26, 64, 0.7);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .home-img img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(146, 26, 64, 1);
+        }
+
+        .home-content {
+            max-width: 50rem;
+        }
+
+        .home-content h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .home-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .home-content p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        span {
+            color: #921A40;
+        }
+
+        /* ===== SOCIAL ICONS ===== */
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            font-size: 2.4rem;
+            color: #921A40;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width: 995px) {
+            section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-img img {
+                width: 35vw;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .logo {
+                font-size: 2.4rem;
+                /* ✅ sama persis dengan file kedua */
+            }
+
+            nav a {
+                font-size: 1.6rem;
+                margin-left: 1.5rem;
+            }
+
+            .home-content h1 {
+                font-size: 2.6rem;
+            }
+
+            .home-content h3 {
+                font-size: 1.8rem;
+            }
+
+            .home-content p {
+                font-size: 1.2rem;
+            }
+
+            .social-icons a {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+  <a href="index.html" class="logo">Barr</a>
+  <nav>
+    <a href="index.html" class="active">Me</a>
+    <a href="exp.html">Experience</a>
+  </nav>
+</header>
+
+
+    <section>
+        <!-- Foto -->
+        <div class="home-img">
+            <img src="Image/Bara.png" alt="Bara Image">
+        </div>
+
+        <!-- Teks + Social -->
+        <div class="home-content">
+            <h1>Hi, It's <span>Bara</span></h1>
+            <h3>I'm a <span>FrontEnd Developer</span></h3>
+            <p>
+                My name is Bara Dwi Andhika, a Frontend Developer and UI/UX Designer. I specialize in building clean, user-friendly, and visually engaging digital experiences that combine functionality with modern design principles.
+            </p>
+
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/baradwi/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/baradwiandhika"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+

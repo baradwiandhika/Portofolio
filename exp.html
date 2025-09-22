@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navLinks = document.querySelectorAll("nav a");
+      const currentPage = window.location.pathname.split("/").pop();
+
+      navLinks.forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: black;
+      color: white;
+      padding-top: 6rem;
+    }
+
+    .text h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin: 3rem 0 2rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 9%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background 0.3s ease, padding 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 0.6rem 9%;
+    }
+
+    /* LOGO */
+    .logo {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #921A40, #ff3d7f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.5s;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #ff3d7f, #921A40);
+      -webkit-background-clip: text;
+    }
+
+    /* NAV LINKS */
+    nav a {
+      position: relative;
+      font-size: 1.6rem;
+      color: white;
+      margin-left: 3rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 3px;
+      background: #921A40;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #921A40;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* Gallery container umum */
+/* Gallery container umum */
+.gallery {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem 9%;
+}
+
+/* Gallery 1 (3 kolom) */
+.gallery.sites {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Gallery 2 (2 kolom) */
+.gallery.designs {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Image container */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #111;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+/* Gambar umum */
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+/* Hover effect */
+.image-container:hover {
+  transform: scale(1.05);
+}
+
+/* Teks gambar */
+.image-text {
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+/* Gallery desain: gambar proporsional mengikuti ukuran asli */
+.gallery.designs img {
+  width: 100%;
+  height: auto;        /* tinggi menyesuaikan gambar asli */
+  object-fit: contain; /* proporsional, tidak terpotong */
+  border-radius: 10px;
+}
+
+
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.image-container:hover {
+  transform: scale(1.03);
+}
+
+.image-text {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo">Barr</a>
+    <nav>
+      <a href="index.html">Me</a>
+      <a href="exp.html" class="active">Experience</a>
+    </nav>
+  </header>
+
+  <div class="text">
+    <h1>Hi, these are some simple websites that I've created:</h1>
+  </div>
+
+  <!-- Gallery 1 (3 + 3) -->
+  <div class="gallery sites">
+    <div class="image-container">
+      <img src="Image/bb.png" alt="Gas Station">
+      <div class="image-text">Gas Station</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/rntl.png" alt="Rent">
+      <div class="image-text">Rent</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/dats.png" alt="Student Data">
+      <div class="image-text">Student Data</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/Math.png" alt="Money Lending">
+      <div class="image-text">Money Lending</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/Aksesoris.png" alt="Accessories Shop">
+      <div class="image-text">Accessories Shop</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/Apotek.png" alt="Pharmacy">
+      <div class="image-text">Pharmacy</div>
+    </div>
+  </div>
+
+  <!-- New Section -->
+  <div class="text">
+    <h1>Here are some of the projects I designed:</h1>
+  </div>
+
+  <!-- Gallery 2 (2 + 2) -->
+  <div class="gallery designs">
+    <div class="image-container">
+      <img src="Image/sodik.png" alt="Sodik Project">
+      <div class="image-text">Sodik Project</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/hadir.in.png" alt="Hadir.in Project">
+      <div class="image-text">Hadir.in Project</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/Company.png" alt="Company Project">
+      <div class="image-text">Company Project</div>
+    </div>
+
+    <div class="image-container">
+      <img src="Image/hadir.web.png" alt="Hadir.web Project">
+      <div class="image-text">Hadir.web Project</div>
+    </div>
+  </div>
+</body>
+
+</html>
