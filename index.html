@@ -1,259 +1,635 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const navLinks = document.querySelectorAll("nav a");
-    const currentPage = window.location.pathname.split("/").pop();
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bara Dwi Andhika - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    navLinks.forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #D4A574 0%, #C9965C 100%);
+      padding: 140px 30px;
+      color: #fff;
+    }
+
+    .hero .container {
+      max-width: 1800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .hero-content h2 {
+      font-size: 28px;
+      font-weight: normal;
+      margin-bottom: 18px;
+      opacity: 0.9;
+    }
+
+    .hero-content h1 {
+      font-size: 82px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      font-size: 24px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      max-width: 700px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .social-links a {
+      width: 65px;
+      height: 65px;
+      background: #fff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #D4A574;
+      font-weight: bold;
+      font-size: 24px;
+      transition: transform 0.3s;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .profile-box {
+      width: 100%;
+      max-width: 450px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      margin: 0 auto;
+      position: relative;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .badge-17th {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      background: #fff;
+      padding: 15px 35px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 26px;
+      color: #D4A574;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    /* About Section */
+    .about {
+      padding: 120px 30px;
+      background: #fff;
+    }
+
+    .container {
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      color: #D4A574;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    .section-heading {
+      font-size: 58px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      margin-bottom: 70px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #D4A574 0%, #C9965C 100%);
+      padding: 60px;
+      border-radius: 25px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+    }
+
+    .stat-number {
+      font-size: 76px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .stat-label {
+      font-size: 22px;
+    }
+
+    .about-text {
+      font-size: 22px;
+      line-height: 2;
+      color: #555;
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Projects Section */
+    .projects {
+      padding: 120px 30px;
+      background: #f8f9fa;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 50px;
+      margin-top: 60px;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #999;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 40px;
+    }
+
+    .project-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .project-desc {
+      font-size: 20px;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* Skills Section */
+    .skills {
+      padding: 120px 30px;
+      background: #fff;
+    }
+
+    .skills-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      margin-top: 60px;
+    }
+
+    .skill-category h3 {
+      font-size: 34px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .skill-item {
+      margin-bottom: 35px;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 21px;
+      font-weight: 600;
+    }
+
+    .skill-bar {
+      height: 15px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #D4A574, #C9965C);
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+
+    /* Tech Stack */
+    .tech-stack {
+      background: #f8f9fa;
+      padding: 120px 30px;
+    }
+
+    .tech-icons {
+      display: flex;
+      justify-content: center;
+      gap: 45px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+    }
+
+    .tech-icon {
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .tech-icon:hover {
+      transform: translateY(-12px);
+    }
+
+    /* Footer */
+    footer {
+      background: #2a2a2a;
+      color: #fff;
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 48px;
+      font-weight: bold;
+      font-style: italic;
+      color: #D4A574;
+      margin-bottom: 25px;
+    }
+
+    .footer-text {
+      font-size: 20px;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .hero .container {
+        grid-template-columns: 1fr;
       }
-    });
-  });
-</script>
 
+      .hero-content h1 {
+        font-size: 42px;
+      }
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+      .skills-content {
+        grid-template-columns: 1fr;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: black;
-            color: white;
-            padding-top: 6rem;
-            min-height: 100vh;
-        }
-
-        /* ===== NAVBAR ===== */
-        /* ===== NAVBAR ===== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 9%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.4);
-            /* semi transparan */
-            backdrop-filter: blur(10px);
-            /* efek kaca */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background 0.3s ease, padding 0.3s ease;
-        }
-
-        header.scrolled {
-            background: rgba(0, 0, 0, 0.9);
-            /* solid saat scroll */
-            padding: 0.6rem 9%;
-        }
-
-        /* LOGO */
-        .logo {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, #921A40, #ff3d7f);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            cursor: pointer;
-            transition: transform 0.3s, background 0.5s;
-        }
-
-        .logo:hover {
-            transform: scale(1.1);
-            background: linear-gradient(45deg, #ff3d7f, #921A40);
-            -webkit-background-clip: text;
-        }
-
-        /* NAV LINKS */
-        nav a {
-            position: relative;
-            font-size: 1.6rem;
-            color: white;
-            margin-left: 3rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0%;
-            height: 3px;
-            background: #921A40;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #921A40;
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
-
-
-        /* ===== HOME SECTION ===== */
-        section {
-            padding: 13rem 9% 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4rem;
-        }
-
-        .home-img img {
-            width: 22vw;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(146, 26, 64, 0.7);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .home-img img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(146, 26, 64, 1);
-        }
-
-        .home-content {
-            max-width: 50rem;
-        }
-
-        .home-content h1 {
-            font-size: 3.4rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .home-content h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .home-content p {
-            font-size: 1.4rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        span {
-            color: #921A40;
-        }
-
-        /* ===== SOCIAL ICONS ===== */
-        .social-icons {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-icons a {
-            font-size: 2.4rem;
-            color: #921A40;
-            transition: 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: white;
-            transform: scale(1.2);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media(max-width: 995px) {
-            section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .home-img img {
-                width: 35vw;
-            }
-
-            .social-icons {
-                justify-content: center;
-            }
-        }
-
-        @media(max-width: 480px) {
-            .logo {
-                font-size: 2.4rem;
-                /* ✅ sama persis dengan file kedua */
-            }
-
-            nav a {
-                font-size: 1.6rem;
-                margin-left: 1.5rem;
-            }
-
-            .home-content h1 {
-                font-size: 2.6rem;
-            }
-
-            .home-content h3 {
-                font-size: 1.8rem;
-            }
-
-            .home-content p {
-                font-size: 1.2rem;
-            }
-
-            .social-icons a {
-                font-size: 2rem;
-            }
-        }
-    </style>
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-  <a href="index.html" class="logo">Barr</a>
-  <nav>
-    <a href="index.html" class="active">Me</a>
-    <a href="exp.html">Experience</a>
-  </nav>
-</header>
-
-
-    <section>
-        <!-- Foto -->
-        <div class="home-img">
-            <img src="Image/Bara.png" alt="Bara Image">
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Hey, I'm</h2>
+        <h1>Bara Dwi Andhika</h1>
+        <p>Frontend Developer & UI/UX Designer crafting clean and user-friendly digital experiences.</p>
+        <div class="social-links">
+    <a href="https://www.linkedin.com/in/baradwi/">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/baradwiandhika">
+        <i class="fab fa-github"></i>
+    </a>
+</div>
+      </div>
+      <div class="hero-image">
+        <div class="profile-box">
+          <img src="Image/Bara.png" alt="Bara Dwi Andhika">
+          <div class="badge-17th">17th</div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Teks + Social -->
-        <div class="home-content">
-            <h1>Hi, It's <span>Bara</span></h1>
-            <h3>I'm a <span>UI/UX Designer</span></h3>
-            <p>
-                My name is Bara Dwi Andhika, a Frontend Developer and UI/UX Designer. I specialize in building clean, user-friendly, and visually engaging digital experiences that combine functionality with modern design principles.
-            </p>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-title">Get To Know</p>
+        <h2 class="section-heading">About Me</h2>
+      </div>
 
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/baradwi/"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/baradwiandhika"><i class="fa-brands fa-github"></i></a>
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+
+      <p class="about-text">
+        Front-End Developer & UI/UX Designer with internship experience at PT Jann Azamm as a UI/UX Designer. Skilled in using Figma to design user-friendly and engaging interfaces, and understands the basics of implementing design into websites. Highly motivated to learn and ready to grow in the creative and technology industries.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-title">My Recent Work</p>
+        <h2 class="section-heading">Projects</h2>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/Aksesoris.png" alt="E-Commerce Platform">
+          </div>
+          <div class="project-info">
+            <div class="project-title">E-Commerce Platform</div>
+            <div class="project-desc">e-commerce designed to display, manage, and sell various accessory products online
             </div>
+          </div>
         </div>
-    </section>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/Company.png" alt="Profile Company">
+          </div>
+          <div class="project-info">
+            <div class="project-title">Profile Company</div>
+            <div class="project-desc">A company website that aims to convey company information.</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/hadir.web.png" alt="Hadir.in (Admin)">
+          </div>
+          <div class="project-info">
+            <div class="project-title">Hadir.in (Admin)</div>
+            <div class="project-desc">A web-based admin system for managing and monitoring teacher attendance at Wikrama
+              Vocational School.Smart board system platform for managing and monitoring parking lot efficiently</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/Apotek.png" alt="Pharmacy">
+          </div>
+          <div class="project-info">
+            <div class="project-title">Pharmacy</div>
+            <div class="project-desc">A pharmacy management website designed to manage and monitor medicine data
+              efficiently.</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/bb.png" alt="Gas Station">
+          </div>
+          <div class="project-info">
+            <div class="project-title">Gas Station</div>
+            <div class="project-desc">A web-based system designed to calculate and manage fuel purchases efficiently.
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/dats.png" alt="Student Data">
+          </div>
+          <div class="project-info">
+            <div class="project-title">Student Data</div>
+            <div class="project-desc">Responsive web based CRUD application to create, read, update and delete student
+              data</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/hadir.in.png" alt="Hadir.in">
+          </div>
+          <div class="project-info">
+            <div class="project-title">Hadir.in (Mobile)</div>
+            <div class="project-desc">attendance application for teachers
+              SMK Wikrama</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Image/sodik.png" alt="Sodik Project">
+          </div>
+          <div class="project-info">
+            <div class="project-title">Sodik</div>
+            <div class="project-desc">Support application for Hajj pilgrims</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-title">What I Offer</p>
+      <h2 class="section-heading">Skills & Tools</h2>
+    </div>
+
+    <div class="skills-content">
+      <div class="skill-category">
+        <h3>Front End Development</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>HTML</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>CSS</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>JavaScript</span>
+            <span>30%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 30%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>PHP</span>
+            <span>70%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 70%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>Design & Others</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Blender</span>
+            <span>50%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 50%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Figma</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Tech Stack -->
+  <section class="tech-stack">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-title">Technologies</p>
+        <h2 class="section-heading">Tech Stack</h2>
+      </div>
+
+      <div class="tech-icons">
+        <div class="tech-icon" style="color: #E34F26;">HTML5</div>
+        <div class="tech-icon" style="color: #1572B6;">CSS3</div>
+        <div class="tech-icon" style="color: #F7DF1E;">JS</div>
+        <div class="tech-icon" style="color: #777BB4;">PHP</div>
+        <div class="tech-icon" style="color: #F24E1E;">Figma</div>
+        <div class="tech-icon" style="color: #FF6C37;">Blender</div>
+        <div class="tech-icon" style="color: #FF2D20;">Laravel</div>
+        <div class="tech-icon" style="color: #181717;">GitHub</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-logo">Bara</div>
+      <p class="footer-text">© 2024 Bara Dwi Andhika. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 
 </html>
-
