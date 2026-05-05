@@ -215,7 +215,7 @@ section {
   margin: auto;
   text-align: center;
   font-size: 20px;
-  color: #cbd5e1;
+  color: var(--gray);
 }
 
 /* ================= PROJECTS ================= */
@@ -258,7 +258,7 @@ section {
 .project-title {
   font-size: 26px;
   margin-bottom: 12px;
-  color: #f3f4f6;
+  color: var(--gray);
 }
 
 .project-desc {
@@ -339,7 +339,7 @@ section {
 footer {
   background: var(--black);
   color: #e5e7eb;
-  padding: 60px 0;
+  padding: 10px 0;
   text-align: center;
 }
 
